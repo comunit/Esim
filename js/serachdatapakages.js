@@ -32,9 +32,11 @@ var search = (isClickOnsideButton) => {
         searchdatapacks.value = "";
         countries.forEach(function (country) {
             var li = document.createElement("li");
-            li.innerHTML = `<a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#">
+            li.innerHTML = `<a class="dropdown-item text-capitalize d-flex align-items-center gap-2 py-2" href="#">
             <span>
-            <image src="./images/countryimages/${country.isocode}.png" alt="${country.countryname}" class="img-fluid">
+            <img src="./images/countryimages/${country.isocode}.png" alt="${
+                country.countryname
+            }" class="img-fluid" data-countrycode="${country.isocode}">
             </span>
             ${country.countryname.charAt(0).toUpperCase() + country.countryname.slice(1)}
             </a>`;
@@ -57,9 +59,11 @@ var search = (isClickOnsideButton) => {
 
     datatosearch.forEach(function (country) {
         var li = document.createElement("li");
-        li.innerHTML = `<a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#">
+        li.innerHTML = `<a class="dropdown-item text-capitalize d-flex align-items-center gap-2 py-2" href="#">
         <span>
-        <img src="./images/countryimages/${country.isocode}.png" alt="${country.countryname}" class="img-fluid">
+        <img src="./images/countryimages/${country.isocode}.png" alt="${
+            country.countryname
+        }" class="img-fluid" data-countrycode="${country.isocode}">
         </span>
         ${country.countryname.charAt(0).toUpperCase() + country.countryname.slice(1)}
       </a>`;
@@ -94,10 +98,27 @@ document.addEventListener("click", function (e) {
     }
 });
 
+// when user click on country then fill input field with country name
 document.addEventListener("click", function (event) {
     if (event.target.closest(".dropdown-item")) {
         event.preventDefault(); // Prevent default link behavior
         console.log(`Clicked on: ${event.target.innerText.trim()}`);
+        // country code
+        console.log(event.target.querySelector("img").dataset.countrycode);
         // Custom logic for handling the click event
+
+        // close dropdown
+        coutrylistdropdown.style.height = "0";
+        // hide arrow
+        arrow.style.display = "none";
+        // show spinner
+        document.getElementById("searchspinner").classList.remove("d-none");
+        // remove box shadow
+        document.getElementById("maininputdropdownicon").style.boxShadow = "none";
+        // fill country name
+        searchdatapacks.value = event.target.innerText.trim();
+
+        // send to product page
+        window.location.href = `products.html?country=${event.target.querySelector("img").dataset.countrycode}`;
     }
 });
