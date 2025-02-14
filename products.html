@@ -64,20 +64,12 @@
                                     <div class="filterduration" id="filterduration">
                                         <p>Duration (Days)</p>
                                         <img src="./images/filterarrow.png" alt="" />
-                                        <div class="dropdown-menu dropdownforduration">
-                                            <a class="dropdown-item" href="#">30 Days</a>
-                                            <a class="dropdown-item" href="#">60 Days</a>
-                                            <a class="dropdown-item" href="#">90 Days</a>
-                                        </div>
+                                        <div class="dropdown-menu dropdownforduration"></div>
                                     </div>
                                     <div class="filterdata" id="filterdata">
                                         <p>Data</p>
                                         <img src="./images/filterarrow.png" alt="" />
-                                        <div class="dropdown-menu dropdownfordata">
-                                            <a class="dropdown-item" href="#">1GB</a>
-                                            <a class="dropdown-item" href="#">3GB</a>
-                                            <a class="dropdown-item" href="#">5GB</a>
-                                        </div>
+                                        <div class="dropdown-menu dropdownfordata"></div>
                                     </div>
                                 </div>
 
@@ -110,7 +102,7 @@
                                 </div>
 
                                 <!-- Product Items -->
-                                <div class="products">
+                                <div class="products" id="products">
                                     <div class="productitem">
                                         <div class="productdescandimage">
                                             <img src="./images/countryimages/th.png" class="img-fluid" />
@@ -233,24 +225,28 @@
 
                 // Function to close both dropdowns
                 function closeDropdowns() {
-                    dropdownData.classList.remove("show");
-                    dropdownDuration.classList.remove("show");
+                    if (dropdownData.classList.contains("show")) {
+                        dropdownData.classList.remove("show");
+                    }
+                    if (dropdownDuration.classList.contains("show")) {
+                        dropdownDuration.classList.remove("show");
+                    }
                 }
 
                 // Toggle dropdowns when clicked
                 filterData.addEventListener("click", function (event) {
+                    event.stopPropagation(); // Prevents bubbling
                     closeDropdowns();
                     dropdownData.classList.toggle("show");
-                    event.stopPropagation(); // Prevents event from bubbling to the document
                 });
 
                 filterDuration.addEventListener("click", function (event) {
+                    event.stopPropagation(); // Prevents bubbling
                     closeDropdowns();
                     dropdownDuration.classList.toggle("show");
-                    event.stopPropagation(); // Prevents event from bubbling to the document
                 });
 
-                // Click outside to close dropdowns
+                // Close dropdown when clicking outside
                 document.addEventListener("click", function (event) {
                     if (
                         !filterData.contains(event.target) &&
@@ -262,13 +258,129 @@
                     }
                 });
 
-                // Close dropdown when an option is selected
-                document.querySelectorAll(".dropdown-item").forEach((item) => {
-                    item.addEventListener("click", function () {
-                        console.log(item.textContent);
+                // Close dropdown when selecting an option
+                document.querySelectorAll(".dropdown-menu .dropdown-item").forEach((item) => {
+                    item.addEventListener("click", function (event) {
+                        event.stopPropagation(); // Prevents further event bubbling
+                        console.log("Clicked on: " + item.textContent);
+                        closeDropdowns();
                     });
                 });
             });
+        </script>
+        <script src="./js/data.js"></script>
+        <script>
+            let fillthefilterData = function (pakages) {
+                let filterData = document.getElementById("filterdata");
+                let filterDuration = document.getElementById("filterduration");
+                let dropdownData = document.querySelector(".dropdownfordata");
+                let dropdownDuration = document.querySelector(".dropdownforduration");
+
+                let data = [];
+                let duration = [];
+                for (let i = 0; i < pakages.length; i++) {
+                    let package = pakages[i];
+                    let dataSize;
+                    if (package.volume >= 1024 * 1024 * 1024) {
+                        // If it's 1GB or more, show in GB
+                        dataSize = {
+                            size: Math.floor(package.volume / (1024 * 1024 * 1024)),
+                            unit: "GB",
+                            volume: package.volume,
+                        };
+                    } else {
+                        // If it's less than 1GB, show in MB
+                        dataSize = {
+                            size: Math.floor(package.volume / (1024 * 1024)),
+                            unit: "MB",
+                            volume: package.volume,
+                        };
+                    }
+                    if (!data.some((d) => d.size === dataSize.size && d.unit === dataSize.unit)) {
+                        data.push(dataSize);
+                    }
+                    if (!duration.includes(package.duration)) {
+                        duration.push(package.duration);
+                    }
+                }
+
+                // sort the data and duration in ascending order
+                data.sort((a, b) => a.volume - b.volume);
+                duration.sort((a, b) => a - b);
+
+                // Fill the data filter
+                let dataFilter = "";
+                for (let i = 0; i < data.length; i++) {
+                    dataFilter += `<a class="dropdown-item" href="#">${data[i].size} ${data[i].unit}</a>`;
+                }
+                dropdownData.innerHTML = dataFilter;
+
+                // Fill the duration filter
+                let durationFilter = "";
+                for (let i = 0; i < duration.length; i++) {
+                    let dayordays = duration[i] === 1 ? "Day" : "Days";
+                    durationFilter += `<a class="dropdown-item" href="#">${duration[i]} ${dayordays}</a>`;
+                }
+                dropdownDuration.innerHTML = durationFilter;
+            };
+        </script>
+        <script>
+            let filterByDuration = false;
+            let filterByData = false;
+            let initData = function (filterByDuration, filterByData) {
+                // create productitem for each package
+                let pakages = apidata.obj.packageList;
+                // filter out the packages and only show show the ones that have only one locationNetworkList
+                pakages = pakages.filter((pakage) => pakage.locationNetworkList.length === 1);
+                // fill the filterByDuration and filterByData
+                fillthefilterData(pakages);
+                let productContainer = document.getElementById("products");
+                for (let i = 0; i < pakages.length; i++) {
+                    let package = pakages[i];
+                    let productItem = document.createElement("div");
+                    productItem.className = "product-item";
+
+                    let dataSize;
+                    const priceInDollars = (package.price / 10000).toFixed(2).replace(/\.00$/, "");
+                    if (package.volume >= 1024 * 1024 * 1024) {
+                        // If it's 1GB or more, show in GB
+                        dataSize = Math.floor(package.volume / (1024 * 1024 * 1024)) + "GB";
+                    } else {
+                        // If it's less than 1GB, show in MB
+                        dataSize = Math.floor(package.volume / (1024 * 1024)) + "MB";
+                    }
+
+                    productItem.innerHTML = `
+                <div class="productitem">
+                    <div class="productdescandimage">
+                        <img src="./images/countryimages/${package.locationNetworkList[0].locationCode}.png" class="img-fluid" alt="${package.locationNetworkList[0].locationName}" />
+                        <p>${package.locationNetworkList[0].locationName}</p>
+                        <p class="forsmallerscreendata">${dataSize}</p>
+                    </div>
+                    <div class="data">
+                        <p>${dataSize}</p>
+                    </div>
+                    <div class="duration">
+                        <p>${package.duration} ${package.durationUnit}</p>
+                    </div>
+                    <div class="price">
+                        <p>$${priceInDollars}</p>
+                    </div>
+                    <div class="speed">
+                        <p>${package.speed}</p>
+                    </div>
+                    <div class="buybutton">
+                        <button>Buy</button>
+                    </div>
+                </div>
+            `;
+
+                    productContainer.appendChild(productItem);
+                }
+            };
+
+            // Initialize the data
+            initData(filterByDuration, filterByData);
         </script>
     </body>
 </html>
