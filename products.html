@@ -106,26 +106,16 @@
 
                                 <!-- Product Items -->
                                 <div class="products" id="products">
-                                    <div class="productitem">
-                                        <div class="productdescandimage">
-                                            <img src="./images/countryimages/th.png" class="img-fluid" />
-                                            <p>Thailand</p>
-                                            <p class="forsmallerscreendata">3GB</p>
+                                    <div class="d-flex justify-content-center">
+                                        <!-- Spinner -->
+                                        <div class="spinner-border mt-5" role="status" id="spinner">
+                                            <span class="sr-only"></span>
                                         </div>
-                                        <div class="data">
-                                            <p>3GB</p>
-                                        </div>
-                                        <div class="duration">
-                                            <p>30 Days</p>
-                                        </div>
-                                        <div class="price">
-                                            <p>$20</p>
-                                        </div>
-                                        <div class="speed">
-                                            <p>3G/4G/5G</p>
-                                        </div>
-                                        <div class="buybutton">
-                                            <button>Buy</button>
+                                        <!-- error -->
+                                        <div class="alert alert-danger d-none text-center" role="alert" id="error">
+                                            <img src="./images/outofstock.png" alt="" />
+                                            <p id="errormessage"></p>
+                                            <a href="/">Go Back</a>
                                         </div>
                                     </div>
                                 </div>
@@ -220,7 +210,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="./js/countriesdata.js"></script>
         <script src="./js/dropdown.js"></script>
-        <script src="./js/data.js"></script>
         <script src="./js/filterdata.js"></script>
         <script src="./js/initdata.js"></script>
     </body>

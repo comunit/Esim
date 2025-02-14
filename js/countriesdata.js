@@ -200,11 +200,6 @@ var countries = [
         flag: "/img/flags/cg.png",
     },
     {
-        countryname: "congo (democratic republic of the)",
-        isocode: "cd",
-        flag: "/img/flags/cd.png",
-    },
-    {
         countryname: "costa rica",
         isocode: "cr",
         flag: "/img/flags/cr.png",
