@@ -111,7 +111,13 @@
     justify-content: center;
 }
 
-.dropdown-menu {
+.clearfilters {
+    margin-left: auto; /* Pushes it to the right */
+    cursor: pointer; /* Optional: Makes it clickable */
+    text-decoration: underline; /* Optional: Adds an underline */
+    color: #3b82f6;
+    display: none;
+    font-size: 15px;
 }
 
 /* medium screens */
@@ -151,6 +157,9 @@
         width: 30px;
         height: 30px;
         margin-bottom: 5px;
+    }
+    .clearfilters {
+        font-size: 12px;
     }
 }
 
