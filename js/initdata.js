@@ -50,7 +50,7 @@ let initData = function (filterByDuration, filterByData) {
         let lowerlocationcode = package.locationNetworkList[0].locationCode.toLowerCase();
 
         productItem.innerHTML = `
-                <div class="productitem">
+                <div class="productitem" data-bs-productid="${package.packageCode}">
                     <div class="productdescandimage">
                         <img src="./images/countryimages/${lowerlocationcode}.png" class="img-fluid" alt="${package.locationNetworkList[0].locationName}" />
                         <p>${package.locationNetworkList[0].locationName}</p>
@@ -74,6 +74,10 @@ let initData = function (filterByDuration, filterByData) {
                 </div>
             `;
 
+        // modal function
+        productItem.querySelector(".buybutton button").addEventListener("click", () => {
+            openModal(package.packageCode);
+        });
         productContainer.appendChild(productItem);
     }
 };
@@ -121,3 +125,20 @@ let showerror = function (message) {
     document.getElementById("errormessage").innerHTML = message;
     document.getElementById("error").classList.remove("d-none");
 };
+
+// modal function
+function openModal(packageCode) {
+    // filter product by packageCode
+    let product = apidata.obj.packageList.filter((pakage) => pakage.packageCode === packageCode)[0];
+    console.log(product);
+    // Set the modal title
+    document.getElementById("exampleModalLabel").innerHTML = product.description;
+    // flag image
+    let lowerlocationcode = product.locationNetworkList[0].locationCode.toLowerCase();
+    document.getElementById("modalflagpic").src = `./images/countryimages/${lowerlocationcode}.png`;
+    // Select the modal element
+    var myModal = new bootstrap.Modal(document.getElementById("productModal"));
+
+    // Open the modal
+    myModal.show();
+}

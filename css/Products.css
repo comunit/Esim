@@ -133,6 +133,32 @@
     text-decoration: underline;
 }
 
+.modal-header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #ca5eb3;
+    margin-right: 10px;
+}
+
+.modal-content {
+    padding: 20px;
+}
+
+.speedmodal ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.speedmodal li {
+    margin-right: 7px;
+    border: 1px solid;
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
 /* medium screens */
 @media (max-width: 768px) {
     .productheader {
