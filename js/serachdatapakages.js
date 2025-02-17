@@ -23,6 +23,7 @@ searchdatapacks.addEventListener("focus", function () {
     search(isClickOnsideButton);
 });
 
+// main search function
 var search = (isClickOnsideButton) => {
     // call this when user click on arrow button
     if (isClickOnsideButton) {
@@ -102,11 +103,6 @@ document.addEventListener("click", function (e) {
 document.addEventListener("click", function (event) {
     if (event.target.closest(".dropdown-item")) {
         event.preventDefault(); // Prevent default link behavior
-        console.log(`Clicked on: ${event.target.innerText.trim()}`);
-        // country code
-        console.log(event.target.querySelector("img").dataset.countrycode);
-        // Custom logic for handling the click event
-
         // close dropdown
         coutrylistdropdown.style.height = "0";
         // hide arrow

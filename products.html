@@ -211,18 +211,58 @@
                         <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
                     </div>
                     <div class="modal-body">
-                        <div class="speedmodal">
-                            <p>Speed</p>
-                            <ul>
-                                <li>3G</li>
-                                <li>4G</li>
-                                <li>5G</li>
-                            </ul>
+                        <div class="productdesc">
+                            <div class="productdesc1">
+                                <p>Speed</p>
+                                <ul id="speedul"></ul>
+                            </div>
+                            <div class="productdesc2">
+                                <p>Duration</p>
+                                <div class="durationmain itemdescp" id="durationmain"></div>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="productdesc">
+                            <div class="productdesc1">
+                                <p>Billing Starts</p>
+                                <div class="durationmain itemdescp" id="billingstarts"></div>
+                            </div>
+                            <div class="productdesc2">
+                                <p>Validity</p>
+                                <div class="durationmain itemdescp" id="validity"></div>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="productdesc">
+                            <div class="productdesc1">
+                                <p>Coverage and networks</p>
+                                <div class="coverageandnetworks" id="coverageandnetworksparent">
+                                    <div class="flagnandlocation">
+                                        <img
+                                            id="coverageandnetworksflag"
+                                            src="./images/countryimages/gb.png"
+                                            class="img-fluid"
+                                        />
+                                        <p id="coverageandnetworkslocation"></p>
+                                    </div>
+                                    <div class="coverageandnetwork">
+                                        <p id="coverageandnetworkoperator"></p>
+                                        <div class="textboxes mt-0" id="coverageandnetworknetworktype"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="productdesc">
+                            <div class="productdesc1">
+                                <p>Price</p>
+                                <div class="durationmain itemdescp" id="modalprice">$10</div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary">Buy Now</button>
                     </div>
                 </div>
             </div>

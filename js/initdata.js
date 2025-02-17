@@ -130,14 +130,94 @@ let showerror = function (message) {
 function openModal(packageCode) {
     // filter product by packageCode
     let product = apidata.obj.packageList.filter((pakage) => pakage.packageCode === packageCode)[0];
-    console.log(product);
     // Set the modal title
     document.getElementById("exampleModalLabel").innerHTML = product.description;
     // flag image
     let lowerlocationcode = product.locationNetworkList[0].locationCode.toLowerCase();
     document.getElementById("modalflagpic").src = `./images/countryimages/${lowerlocationcode}.png`;
+
+    // speed
+    let speedsAvailable = product.speed.split("/");
+    let speedlist = document.getElementById("speedul");
+    speedlist.innerHTML = "";
+    speedsAvailable.forEach((speed) => {
+        let li = document.createElement("li");
+        li.className = "textboxes";
+        li.innerHTML = speed;
+        speedlist.appendChild(li);
+    });
+
+    // duration
+    document.getElementById("durationmain").innerHTML = `${product.duration} Days`;
+
+    // billingstarts
+    document.getElementById("billingstarts").innerHTML = product.billingStarts;
+    if (product.activeType === 1) {
+        document.getElementById("billingstarts").innerHTML = "First installation";
+    } else if (product.activeType === 2) {
+        document.getElementById("billingstarts").innerHTML = "First network connection";
+    }
+
+    // validity
+    document.getElementById("validity").innerHTML = product.unusedValidTime + " Days";
+
     // Select the modal element
     var myModal = new bootstrap.Modal(document.getElementById("productModal"));
+
+    // price
+    let priceInDollars = (product.price / 10000).toFixed(2).replace(/\.00$/, "");
+    document.getElementById("modalprice").innerHTML = `$${priceInDollars}`;
+
+    // coverageandnetworks
+    let coverageandnetworks = document.getElementById("coverageandnetworks");
+    let coverageandnetworkslist = [];
+
+    product.locationNetworkList.forEach((locationNetwork) => {
+        if (locationNetwork.operatorList.length === 0) {
+            coverageandnetworkslist.push({
+                location: locationNetwork.locationName,
+                operator: null,
+                networkType: null,
+                locationCode: locationNetwork.locationCode,
+            });
+        } else {
+            locationNetwork.operatorList.forEach((operator) => {
+                coverageandnetworkslist.push({
+                    location: locationNetwork.locationName,
+                    operator: operator.operatorName,
+                    networkType: operator.networkType,
+                    locationCode: locationNetwork.locationCode,
+                });
+            });
+        }
+    });
+
+    // empty the coverageandnetworks
+    document.getElementById("coverageandnetworksparent").innerHTML = "";
+
+    // now we have the coverageandnetworkslist
+    coverageandnetworkslist.forEach((coverageandnetwork) => {
+        document.getElementById("coverageandnetworksparent").innerHTML += `
+            <div class="coverageandnetworks">
+                <div class="flagnandlocation">
+                    <img
+                        id="coverageandnetworksflag"
+                        src="./images/countryimages/${
+                            coverageandnetwork.locationCode ? coverageandnetwork.locationCode.toLowerCase() : "default"
+                        }.png"
+                        class="img-fluid"
+                    />
+                    <p id="coverageandnetworkslocation">${coverageandnetwork.location || "Unknown Location"}</p>
+                </div>
+                <div class="coverageandnetwork">
+                    <p id="coverageandnetworkoperator">${coverageandnetwork.operator || ""}</p>
+                    <div id="coverageandnetworknetworktype"
+                        class="${coverageandnetwork.networkType ? "textboxes mt-0" : ""}">
+                        ${coverageandnetwork.networkType || ""}
+                    </div>
+                </div>
+            </div>`;
+    });
 
     // Open the modal
     myModal.show();
