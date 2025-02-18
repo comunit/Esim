@@ -64,7 +64,7 @@
 /* very light grey for the thumb */
 #countryul::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background: #ccc;
+    background-color: #ca5eb3;
 }
 
 .dropdown-item img {
@@ -72,7 +72,10 @@
     height: 30px;
     border-radius: 50%;
     margin-right: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #ca5eb3;
+}
+.spinner-border {
+    color: #ca5eb3;
 }
 /* round pics */
 .coogb {

@@ -1006,6 +1006,16 @@
             </footer>
         </div>
 
+        <script>
+            // reload when back button is pressed
+            (function () {
+                window.onpageshow = function (event) {
+                    if (event.persisted) {
+                        window.location.reload();
+                    }
+                };
+            })();
+        </script>
         <script src="./js/alpinejs.min.js" defer=""></script>
         <script src="./js/aos.js"></script>
         <script src="./js/swiper-bundle.min.js"></script>

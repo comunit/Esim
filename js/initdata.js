@@ -2,13 +2,12 @@ let apidata = null;
 let initData = function (filterByDuration, filterByData) {
     // create productitem for each package
     let pakages = apidata.obj.packageList;
-    // filter out the packages and only show show the ones that have only one locationNetworkList
+    // filter out the packages and only show the ones that have only one locationNetworkList
     pakages = pakages.filter((pakage) => pakage.locationNetworkList.length === 1);
 
     // If there are no packages, show an error message
     if (pakages.length === 0) {
         // hide spinner
-
         showerror("No packages available for this country");
         return;
     }
@@ -69,13 +68,26 @@ let initData = function (filterByDuration, filterByData) {
                         <p>${package.speed}</p>
                     </div>
                     <div class="buybutton">
-                        <button>Buy</button>
+                    <div class="spinner-border d-none" role="status">
+                      <span class="sr-only"></span>
+                    </div>
+                    <a href="./orderdetails.html" class="btn btn-primary"><button>Buy</button></a>
                     </div>
                 </div>
             `;
 
         // modal function
         productItem.querySelector(".buybutton button").addEventListener("click", () => {
+            // get spinner within the product item
+            let spinner = productItem.querySelector(".buybutton .spinner-border");
+            spinner.classList.remove("d-none");
+            // hide buy button
+            productItem.querySelector(".buybutton button").style.display = "none";
+            // wait for 2 seconds
+            setTimeout(() => {
+                spinner.classList.add("d-none");
+                productItem.querySelector(".buybutton button").style.display = "inline-block";
+            }, 1000);
             openModal(package.packageCode);
         });
         productContainer.appendChild(productItem);
@@ -172,7 +184,9 @@ function openModal(packageCode) {
     let coverageandnetworks = document.getElementById("coverageandnetworks");
     let coverageandnetworkslist = [];
 
+    // iterate through the locationNetworkList
     product.locationNetworkList.forEach((locationNetwork) => {
+        // check if the operatorList is empty becouse there some locationNetworks that have no operatorList
         if (locationNetwork.operatorList.length === 0) {
             coverageandnetworkslist.push({
                 location: locationNetwork.locationName,

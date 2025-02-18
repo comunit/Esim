@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
         <link href="./css/style.css" rel="stylesheet" />
         <link rel="stylesheet" href="./css/custom.css" />
-        <link rel="stylesheet" href="./css/Products.css" />
+        <link rel="stylesheet" href="./css/order.css" />
     </head>
 
     <body class="cn1d6 cynvb crnb7 ch42x c2bv5">
@@ -57,139 +57,10 @@
                 <!-- Hero -->
                 <section class="co2j4">
                     <div class="c9ute c64bb cmk35 chcho">
-                        <div class="ca1sv c7l80 confk ceajn">
-                            <div class="procutswrapper">
-                                <!-- Product Filters -->
-                                <div class="productfilters">
-                                    <div class="filterduration" id="filterduration">
-                                        <p>Duration (Days)</p>
-                                        <img src="./images/filterarrow.png" alt="" />
-                                        <div class="dropdown-menu dropdownforduration"></div>
-                                    </div>
-                                    <div class="filterdata" id="filterdata">
-                                        <p>Data</p>
-                                        <img src="./images/filterarrow.png" alt="" />
-                                        <div class="dropdown-menu dropdownfordata"></div>
-                                    </div>
-                                    <div class="clearfilters" id="clearfilters">
-                                        <p>Clear Filters</p>
-                                    </div>
-                                </div>
-
-                                <!-- Product Header -->
-                                <div class="productheader">
-                                    <div class="productheaderitem">
-                                        <img src="./images/countries.png" />
-                                        <p>Country</p>
-                                    </div>
-                                    <div class="productheaderitem headerdata">
-                                        <img src="./images/signal-tower.png" />
-                                        <p>Data</p>
-                                    </div>
-                                    <div class="productheaderitem">
-                                        <img src="./images/duration.png" />
-                                        <p>Duration</p>
-                                    </div>
-                                    <div class="productheaderitem">
-                                        <img src="./images/pricetag.png" />
-                                        <p>Price</p>
-                                    </div>
-                                    <div class="productheaderitem headerspeed">
-                                        <img src="./images/speed.png" />
-                                        <p>Speed</p>
-                                    </div>
-                                    <div class="productheaderitem">
-                                        <img src="./images/checkout.png" />
-                                        <p>Buy</p>
-                                    </div>
-                                </div>
-
-                                <!-- Product Items -->
-                                <div class="products" id="products">
-                                    <div class="d-flex justify-content-center">
-                                        <!-- Spinner -->
-                                        <div class="spinner-border mt-5" role="status" id="spinner">
-                                            <span class="sr-only"></span>
-                                        </div>
-                                        <!-- error -->
-                                        <div class="alert alert-danger d-none text-center" role="alert" id="error">
-                                            <img src="./images/outofstock.png" alt="" />
-                                            <p id="errormessage"></p>
-                                            <a href="/">Go Back</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="ca1sv c7l80 confk ceajn">.</div>
                     </div>
                 </section>
             </main>
-
-            <!-- Modal -->
-            <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <img src="./images/countryimages/gb.png" class="img-fluid" id="modalflagpic" />
-                            <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-                        </div>
-                        <div class="modal-body">
-                            <div class="productdesc">
-                                <div class="productdesc1">
-                                    <p>Speed</p>
-                                    <ul id="speedul"></ul>
-                                </div>
-                                <div class="productdesc2">
-                                    <p>Duration</p>
-                                    <div class="durationmain itemdescp" id="durationmain"></div>
-                                </div>
-                            </div>
-                            <div class="divider"></div>
-                            <div class="productdesc">
-                                <div class="productdesc1">
-                                    <p>Billing Starts</p>
-                                    <div class="durationmain itemdescp" id="billingstarts"></div>
-                                </div>
-                                <div class="productdesc2">
-                                    <p>Validity</p>
-                                    <div class="durationmain itemdescp" id="validity"></div>
-                                </div>
-                            </div>
-                            <div class="divider"></div>
-                            <div class="productdesc">
-                                <div class="productdesc1">
-                                    <p>Coverage and networks</p>
-                                    <div class="coverageandnetworks" id="coverageandnetworksparent">
-                                        <div class="flagnandlocation">
-                                            <img
-                                                id="coverageandnetworksflag"
-                                                src="./images/countryimages/gb.png"
-                                                class="img-fluid"
-                                            />
-                                            <p id="coverageandnetworkslocation"></p>
-                                        </div>
-                                        <div class="coverageandnetwork">
-                                            <p id="coverageandnetworkoperator"></p>
-                                            <div class="textboxes mt-0" id="coverageandnetworknetworktype"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="divider"></div>
-                            <div class="productdesc">
-                                <div class="productdesc1">
-                                    <p>Price</p>
-                                    <div class="durationmain itemdescp" id="modalprice">$10</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!-- Site footer -->
             <footer>
@@ -274,9 +145,5 @@
         <script src="./js/main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="./js/countriesdata.js"></script>
-        <script src="./js/dropdown.js"></script>
-        <script src="./js/filterdata.js"></script>
-        <script src="./js/initdata.js"></script>
     </body>
 </html>
