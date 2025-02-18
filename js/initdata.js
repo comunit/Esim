@@ -71,7 +71,7 @@ let initData = function (filterByDuration, filterByData) {
                     <div class="spinner-border d-none" role="status">
                       <span class="sr-only"></span>
                     </div>
-                    <a href="./orderdetails.html" class="btn btn-primary"><button>Buy</button></a>
+                    <button>Buy</button>
                     </div>
                 </div>
             `;
