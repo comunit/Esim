@@ -1,0 +1,402 @@
+.orderdetails {
+    display: flex;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    min-height: 300px;
+}
+.orderdetailsitem {
+    flex: 1;
+    padding: 10px;
+    justify-content: center !important;
+    align-items: center !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.imagemain {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 1px solid #ca5eb3;
+}
+
+.orderdetailsitemdesc {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    font-size: 1.2rem;
+}
+
+.mask {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    width: 12.5rem;
+    height: 6.25rem;
+    margin: 1.25rem;
+}
+
+.semi-circle {
+    position: relative;
+    display: block;
+    width: 12.5rem;
+    height: 6.25rem;
+    background: linear-gradient(to right, #c0392b 0%, #f1c40f 50%, #1abc9c 100%);
+    border-radius: 50% 50% 50% 50%/100% 100% 0% 0%;
+}
+.semi-circle::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    z-index: 2;
+    display: block;
+    width: 8.75rem;
+    height: 4.375rem;
+    margin-left: -4.375rem;
+    background: #fff;
+    border-radius: 50% 50% 50% 50%/100% 100% 0% 0%;
+}
+
+.semi-circle--mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12.5rem;
+    height: 12.5rem;
+    background: transparent;
+    transform: rotate(120deg) translate3d(0, 0, 0);
+    transform-origin: center center;
+    backface-visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+.semi-circle--mask::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0%;
+    z-index: 2;
+    display: block;
+    width: 12.625rem;
+    height: 6.375rem;
+    margin: -1px 0 0 -1px;
+    background: #f2f2f2;
+    border-radius: 50% 50% 50% 50%/100% 100% 0% 0%;
+}
+
+.gauge--1 .semi-circle {
+    background: #1abc9c;
+}
+
+.gauge--1 .semi-circle--mask {
+    transform: rotate(10deg) translate3d(0, 0, 0);
+}
+
+.yourpakcage {
+    min-height: unset;
+    margin-top: 10px;
+}
+
+.productheader {
+    display: flex;
+    padding: 10px;
+    width: 100%;
+}
+
+.productheaderitem {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.productheaderitem img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.activationguide {
+    margin-top: 10px;
+    width: 100%;
+    box-shadow: unset;
+}
+
+.esiminstallh5 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 20px;
+    margin-bottom: 0;
+}
+
+.activationtypeselection {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.activateandroid,
+.activateios {
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    height: 80px;
+    width: 100%;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.imgos {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.activationguides {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+}
+.imgactivationandroid,
+.imgactivationios {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+}
+
+.byqrcode,
+.bymanual {
+    flex: 1;
+    padding: 20px;
+}
+
+.byqrcode h5 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.byqrcode p {
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.byqrcode img {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.bymanual {
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-image: linear-gradient(to bottom, #dee2e6, rgba(0, 0, 0, 0)) 1 100%;
+}
+
+.bymanual h5 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.manualh5 {
+    font-size: 1.5rem !important;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.iosh5 {
+    font-size: 1.2rem !important;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.activationcode {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.activationcode h5 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.activationcode p {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.accessdata {
+    flex: 1 1 100%;
+    width: 100%;
+    border-top: 1px solid #dee2e6;
+    padding: 20px;
+}
+.accessdata h5 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.active {
+    background-color: #f3eafb;
+    color: #8034d5;
+}
+
+.activateandroid,
+.activateios {
+    position: relative;
+}
+
+.downarrow {
+    width: 40px;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: rotate(270deg);
+    transition: all 0.3s ease-in-out;
+}
+
+.notactiveyet {
+    text-align: center;
+    max-width: 300px;
+    color: #c0392b;
+}
+
+.bigmain {
+    position: relative;
+}
+
+.activebadge {
+    background: #04aa6d;
+    color: #fff;
+    align-items: center;
+    border-radius: 4px;
+    display: inline-flex;
+    font-size: 11px;
+    gap: 6px;
+    height: 24px;
+    line-height: 16px;
+    max-width: 100%;
+    padding: 6px 10px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.badge__indicator {
+    border-radius: 24px;
+    flex-shrink: 0;
+    height: 5px;
+    width: 5px;
+    background: #fff;
+}
+
+.expired {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badde_indicator_expired {
+    background: #721c24;
+}
+
+.notactiveyet img {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 620px) {
+    .orderdetails {
+        flex-direction: column;
+    }
+    .imgos {
+        width: 25px;
+        height: 25px;
+    }
+    .activateandroid,
+    .activateios p {
+        font-size: 1rem;
+    }
+    .activateandroid,
+    .activateios {
+        padding: 8px;
+        margin: 5px;
+        height: 60px;
+    }
+    .downarrow {
+        width: 21px;
+        top: 58%;
+        right: 0px;
+    }
+    .bymanual {
+        border-left: none;
+    }
+    .byqrcode p {
+        text-align: left;
+    }
+    .productheader p {
+        font-size: 0.8rem;
+        margin-top: 3px;
+    }
+    .productheaderitem img {
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+        margin-top: 4px;
+    }
+    .activationguides {
+        padding: 10px;
+    }
+    .imgactivationandroid,
+    .imgactivationios {
+        width: 20px;
+    }
+    .byqrcode {
+        border-bottom: 1px solid #dee2e6;
+    }
+    .orderdetailsitem {
+        position: relative;
+    }
+    .imagemain {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+    }
+    .orderdetailsitemdesc {
+        font-weight: 600;
+    }
+    .orderdetails {
+        min-height: unset;
+    }
+    .activebadge {
+        top: unset;
+        bottom: -4px;
+        right: 10px;
+    }
+}
