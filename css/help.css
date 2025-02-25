@@ -1,0 +1,110 @@
+.helpcontainer {
+    display: flex;
+    gap: 10px;
+}
+
+.helpsidepanel {
+    flex: 2;
+}
+
+.helpmain {
+    flex: 5;
+}
+
+.helpsidepaneltop img {
+    width: 70px;
+    margin: 0 auto;
+}
+
+.helpsidepaneltop h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 10px 0px;
+}
+
+.helpsidepaneltopics {
+    margin-top: 20px;
+}
+
+.helptopic {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 10px 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+.helptopic:hover {
+    background-color: #f0f0f0;
+}
+
+.helptopic img {
+    width: 20px;
+}
+
+.helpquestionandanswer {
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.helpquestionandanswer img {
+    width: 30px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    rotate: 270deg;
+}
+
+.helpquestionandanswer h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.answer {
+    display: none;
+    margin-top: 10px;
+}
+
+.helptopics {
+    margin-top: 80px;
+    display: none;
+}
+
+.activetopic {
+    background-color: #f0f0f0;
+}
+
+@media screen and (max-width: 800px) {
+    .helpcontainer {
+        flex-direction: column;
+    }
+
+    .helpsidepaneltop img {
+        width: 50px;
+    }
+
+    .helpsidepaneltop h1 {
+        font-size: 1.5rem;
+    }
+
+    .helpquestionandanswer img {
+        width: 20px;
+    }
+
+    .helpmain {
+        margin-top: 20px;
+    }
+    .helptopics {
+        margin-top: 10px;
+    }
+    .helpsidepaneltop img {
+        display: none;
+    }
+}
