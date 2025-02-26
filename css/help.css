@@ -25,6 +25,17 @@
 .helpsidepaneltopics {
     margin-top: 20px;
 }
+.welcome {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.welcome h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
 
 .helptopic {
     display: flex;
@@ -65,6 +76,7 @@
 .helpquestionandanswer h3 {
     font-size: 1.2rem;
     font-weight: 500;
+    max-width: 95%;
 }
 
 .answer {
@@ -79,6 +91,41 @@
 
 .activetopic {
     background-color: #f0f0f0;
+}
+
+.helpquestionandanswer ul li::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: #ca5eb3;
+    border-radius: 100%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.form form {
+    margin: 0 auto;
+    width: 30rem;
+}
+
+.form button {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.form input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #cfc5c5 !important;
+}
+
+.success-message {
+    color: green;
+    font-weight: 600;
+    margin-top: 10px;
 }
 
 @media screen and (max-width: 800px) {
@@ -106,5 +153,8 @@
     }
     .helpsidepaneltop img {
         display: none;
+    }
+    .form form {
+        width: 100%;
     }
 }

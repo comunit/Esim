@@ -10,12 +10,14 @@ helptopics.forEach((topic) => {
         topic.classList.add("activetopic");
         if (document.getElementById(topicid + "-helpmain") != null) {
             document.getElementById(topicid + "-helpmain").style.display = "block";
-            // bring into view
-            document.getElementById(topicid + "-helpmain").scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-                inline: "nearest",
-            });
+            // bring into view if screen size is less than 700px
+            if (window.innerWidth < 700) {
+                document.getElementById("contactsupport").scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                    inline: "nearest",
+                });
+            }
         }
     });
 });
@@ -25,6 +27,8 @@ function closeAllHelpTopics() {
         if (document.getElementById(topic.id + "-helpmain") != null) {
             document.getElementById(topic.id + "-helpmain").style.display = "none";
         }
+        // close welcome-helpmain if open initial helpmain
+        document.getElementById("welcome-helpmain").style.display = "none";
     });
 
     // remove activetopic class from all topics
@@ -35,7 +39,15 @@ function closeAllHelpTopics() {
 
 helpquestionandanswers.forEach((questionandanswer) => {
     questionandanswer.addEventListener("click", () => {
-        closeAllHelpquestionandanswers();
+        // check if clicked on the one which is already open then only close clicked one else close all
+        if (questionandanswer.querySelector(".answer").style.display === "block") {
+            questionandanswer.querySelector(".answer").style.display = "none";
+            questionandanswer.querySelector("img").style.transform = "rotate(0deg)";
+            return;
+        } else {
+            closeAllHelpquestionandanswers();
+        }
+
         // get .answer within the clicked questionandanswer
         let answer = questionandanswer.querySelector(".answer");
         // img within the clicked questionandanswer
